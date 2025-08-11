@@ -1,0 +1,19 @@
+@startuml
+!define RECTANGLE class
+RECTANGLE VNet {
+  subnet_app
+  subnet_db
+}
+RECTANGLE AppService
+RECTANGLE PostgreSQL
+RECTANGLE KeyVault
+RECTANGLE AppGateway
+RECTANGLE LogAnalytics
+VNet -left-> AppService
+AppService -down-> PostgreSQL
+AppService -right-> KeyVault
+AppGateway -down-> AppService
+AppService -right-> LogAnalytics
+PostgreSQL -right-> LogAnalytics
+AppGateway -right-> LogAnalytics
+@enduml
